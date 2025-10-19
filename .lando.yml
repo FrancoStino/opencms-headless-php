@@ -1,0 +1,5 @@
+name: opencms-headless-php
+recipe: lemp
+config:
+  php: '8.4'
+  webroot: public
