@@ -3,3 +3,8 @@ recipe: lemp
 config:
   php: '8.4'
   webroot: public
+services:
+  appserver_nginx:
+    overrides:
+      ports:
+        - "9554:80"

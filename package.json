@@ -1,0 +1,12 @@
+{
+  "name": "opencms-headless-php",
+  "version": "1.0.0",
+  "description": "OpenCms Headless PHP Application",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/input.css -o ./public/dist/output.css --minify",
+    "watch:css": "tailwindcss -i ./css/input.css -o ./public/dist/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
