@@ -80,10 +80,7 @@
                         <a href="/contatti" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
                             Contatti
                         </a>
-                        <a href="?type=article-m&locale=<?php echo htmlspecialchars($locale ?? 'en'); ?>" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors">
-                            News
-                        </a>
-                    </nav>
+                                            </nav>
                     
                     <!-- Dark Mode Toggle -->
                     <button 
@@ -120,10 +117,7 @@
                 <a href="/contatti" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
                     Contatti
                 </a>
-                <a href="?type=article-m&locale=<?php echo htmlspecialchars($locale ?? 'en'); ?>" class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-                    News
-                </a>
-            </div>
+                            </div>
         </div>
     </header>
 
