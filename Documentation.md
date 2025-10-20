@@ -356,7 +356,8 @@ npm run build:css
 >    ```bash
 >    GOOGLE_MAPS_API_KEY=LA_TUA_API_KEY_VERA
 >    ```
-> 
+
+>
 > #### Struttura indirizzo JSON
 > ```json
 > {
@@ -368,7 +369,7 @@ npm run build:css
 >   ]
 > }
 > ```
-> 
+>
 > #### Tipi di Mappe Supportate
 > - **Google Maps Embed**: Per mappe statiche (componente map-google.php)
 > - **Google Maps JavaScript**: Per mappe interattive (componente Contact.php)

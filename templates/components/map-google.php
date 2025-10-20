@@ -12,7 +12,7 @@ $title       = $localeContent[ 'Title' ] ?? 'Mappa';
 // Determine zoom level
 // Check if settings specify to use first marker zoom or a specific zoom
 $mapZoomSetting = $settings[ 'mapZoom' ] ?? null;
-if ( $mapZoomSetting === 'firstMarker' || empty($settings[ 'zoom' ]) ) {
+if ( $mapZoomSetting === 'firstMarker' || empty( $settings[ 'zoom' ] ) ) {
 	// We'll get zoom from the coordinate data, or use default 15
 	$zoom = '15';
 } else {
