@@ -55,6 +55,22 @@ class Contact
                 echo '<p class="text-gray-600 dark:text-gray-400">' . htmlspecialchars($address['StreetAddress']) . '</p>';
                 echo '<p class="text-gray-600 dark:text-gray-400">' . htmlspecialchars($address['PostalCode']) . ' ' . htmlspecialchars($address['Locality']) . '</p>';
                 echo '</div>';
+
+                // Google Maps integration
+                $apiKey = getenv('GOOGLE_MAPS_API_KEY');
+                if ($apiKey && $apiKey !== 'your_api_key_here') {
+                    $mapId = 'google-map-' . uniqid();
+                    $fullAddress = htmlspecialchars($address['StreetAddress']) . ', ' . htmlspecialchars($address['PostalCode']) . ' ' . htmlspecialchars($address['Locality']);
+                    echo '<div class="mt-6"><h3 class="font-medium text-gray-900 dark:text-gray-100 mb-3">Mappa</h3>';
+                    echo '<div id="' . $mapId . '" class="w-full h-64 rounded-lg bg-gray-100 dark:bg-gray-700" data-address="' . $fullAddress . '"></div>';
+                    echo '<script>window.initMapForElement && window.initMapForElement("' . $mapId . '", "' . addslashes($fullAddress) . '");</script>';
+                    echo '<script src="https://maps.googleapis.com/maps/api/js?key=' . $apiKey . '&callback=initMap" async defer></script>';
+                    echo '</div>';
+                } else {
+                    echo '<div class="mt-6"><h3 class="font-medium text-gray-900 dark:text-gray-100 mb-3">Mappa</h3>';
+                    echo '<div class="w-full h-64 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center"><p class="text-gray-500 dark:text-gray-400">Configura GOOGLE_MAPS_API_KEY per vedere la mappa</p></div>';
+                    echo '</div>';
+                }
             }
             if (!empty($contactDetails['Email']['Email'])) {
                 echo '<div><h3 class="font-medium text-gray-900 dark:text-gray-100 mb-1">Email</h3>';

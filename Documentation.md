@@ -10,16 +10,10 @@ supporto multilingua e dark mode.
 
 Creare un'alternativa PHP all'implementazione Next.js originale, mantenendo la stessa esperienza utente e funzionalità
 attraverso un'architettura MVC server-side.
-
 ---
 
 ## Architettura del Sistema
 
-### Pattern Architetturale
-
-- **MVC (Model-View-Controller)**: Separazione chiara tra logica di business, modelli dati e presentazione
-- **Component-based rendering**: Utilizzo di componenti riutilizzabili per il rendering dei contenuti
-- **Template inheritance**: Sistema di layout con inclusione di template parziali
 
 ### Struttura delle Directory
 
@@ -29,7 +23,8 @@ attraverso un'architettura MVC server-side.
 │   ├── Api/                      # Client API
 │   ├── Controllers/              # Controller MVC
 │   ├── Model/                    # Modelli dati
-│   └── Components/               # Componenti di rendering
+│   ├── Components/               # Componenti PHP
+│   └── Router.php                # Routing
 ├── templates/                    # Template PHP
 │   ├── components/               # Componenti template
 │   ├── layout.php                # Layout principale
@@ -37,24 +32,19 @@ attraverso un'architettura MVC server-side.
 │   ├── detail.php                # Vista dettaglio
 │   └── page.php                  # Rendering pagine container
 ├── public/                       # File pubblici
+│   ├── dist/output.css            # CSS compilato (Tailwind + custom)
+│   ├── js/app.js                 # JavaScript applicazione
+│   ├── index.php                 # Entry point
+│   └── .htaccess                  # URL rewriting
+├── css/input.css                 # Sorgente CSS per Tailwind
+├── tailwind.config.js            # Configurazione Tailwind CSS
 └── composer.json                 # Dipendenze PHP
-```
-
----
-
-## API Integration
-
-### ApiClient Class
-
-La classe `App\Api\ApiClient` gestisce tutte le comunicazioni con l'API OpenCMS JSON.
-
 #### Endpoint Base
 
 ```php
 private $apiEndpoint = 'http://localhost/json/sites/mercury.local';
-```
 
-#### Metodi Principali
+#### Metodi principali
 
 ##### `loadContentList($type, $locale): array`
 
@@ -181,37 +171,36 @@ I componenti sono divisi in due categorie:
 #### Paragraph Component
 
 - **Gestisce**: Testo, immagini, titoli, caption
-- **Supporto**: YouTube embed (auto-detect)
 
 ---
 
 ## Sistema di Template
 
 ### Layout Principale (`templates/layout.php`)
+- Gestisce il caricamento di risorse esterne (CSS, JS)
+- Include TailwindCSS via CDN
+- Header con navigazione responsive
+- Footer con link utili
+- Struttura semantica HTML5
 
-- **DOCTYPE HTML5** con meta tags responsive
-- **TailwindCSS** via CDN con configurazione custom
-- **Dark mode** support con classe `dark`
-- **Configurazione colori** primary custom
-- **JavaScript** per toggle dark mode
+### File Statici Pubblici (`public/`)
+- `css/styles.css` - Stili CSS custom e utility classes
+- `js/app.js` - JavaScript per interattività e gestione stato
 
 ### Template Specifici
 
 #### `list.php`
-
 - Vista griglia responsive per liste contenuti
 - Dropdown per selezione tipo/locale
 - Card con hover effects
 - Paginazione implicita (tutti contenuti caricati)
 
 #### `detail.php`
-
 - Rendering type-specific dei contenuti
 - Include componenti appropriati per tipo
 - Layout pulito e leggibile
 
 #### `page.php`
-
 - Rendering complesso per pagine container
 - Gestione struttura nested containers/elements
 - Fetch dinamico contenuti elementi
@@ -323,88 +312,64 @@ I componenti sono divisi in due categorie:
     }
   }
 }
-```
 
 ### Variabili Ambiente
 
 ```bash
 OPENCMS_SERVER=http://localhost  # URL server OpenCMS
+GOOGLE_MAPS_API_KEY=your_api_key_here  # API Key per Google Maps
 ```
+### Build Commands
 
-### Web Server
+```bash
+# Build CSS una volta
+npm run build:css
+### Workflow Sviluppo
 
-- **Development**: `php -S localhost:8000 -t public`
-- **Production**: Apache/Nginx con rewrite rules
-- **Rewrite Rule**: `RewriteRule ^(.*)$ index.php [QSA,L]`
+1. **Modifica stili** in `css/input.css`
+2. **Build CSS** con `npm run build:css`
+3. **Ricarica pagina** per vedere i cambiamenti
+4. **Per sviluppo continuo** usa `npm run watch:css`
 
----
+### Google Maps Integration
 
-## Flusso di Rendering
+L'applicazione supporta mappe Google integrate nei dettagli dei contatti:
 
-### 1. Richiesta Utente
+1. **Ottieni API Key** da [Google Cloud Console](https://console.cloud.google.com/)
+2. **Abilita Google Maps API** nel tuo progetto
+3. **Imposta variabile ambiente**: `GOOGLE_MAPS_API_KEY=your_key`
+4. **La mappa appare automaticamente** nei contatti con indirizzo valido
 
+**Struttura indirizzo JSON**:
+```json
+{
+  "Contact": {
+    "AddressChoice": {
+      "Address": {
+        "StreetAddress": "Via Roma 123",
+        "PostalCode": "00100",
+        "Locality": "Roma"
+      }
+    }
+  }
+}
 ```
-Utente → URL → index.php → Router → Controller
-```
-
-### 2. Fetch Dati
-
-```
-Controller → ApiClient → API OpenCMS → JSON Response
-```
-
-### 3. Elaborazione Dati
-
-```
-JSON → Page Model → Component Factory → Components
-```
-
-### 4. Rendering Template
-
-```
-Components → Template → HTML Output → Browser
-```
-
-### 5. Esempio Homepage
-
-```
-1. GET / → showPage('/sites/mercury.local/index.html')
-2. ApiClient carica struttura container
-3. page.php itera containers/elements
-4. Per ogni element: fetch contenuto da path
-5. Identifica formatterKey e renderizza componente
-6. Output: Homepage completa con slider, sezioni, etc.
-```
-
 ---
 
 ## Best Practices Implementate
 
-### Codice
-
-- **PSR-4 Autoloading**: Namespace coerenti
-- **Type Hints**: Dichiarazioni tipi PHP 7+
-- **Error Handling**: Try/catch e validazioni
-- **Separation of Concerns**: MVC chiaro
-
 ### Performance
-
+- **CSS Compilato**: Tailwind precompilato per prestazioni ottimali
 - **Lazy Loading**: Contenuti caricati on-demand
-- **CDN Resources**: Tailwind via CDN
 - **Minimal JS**: Solo funzionalità essenziali
 
 ### UX/UI
-
 - **Progressive Enhancement**: Funziona senza JS
 - **Accessibility**: Semantica HTML corretta
 - **Responsive**: Mobile-first approach
 - **Dark Mode**: Support preferenze utente
 
----
-
-## Troubleshooting
-
-### Problemi Comuni
+### Troubleshooting
 
 #### API Non Raggiungibile
 
