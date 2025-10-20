@@ -4,7 +4,8 @@
 
 ✅ **Replicato con successo il progetto Next.js OpenCMS in PHP**
 
-Il progetto PHP ora offre la stessa esperienza utente e funzionalità del progetto Next.js originale (`~/IdeaProjects/OpenCMS/`), con un'interfaccia moderna, responsive e feature-complete.
+Il progetto PHP ora offre la stessa esperienza utente e funzionalità del progetto Next.js originale (
+`~/IdeaProjects/OpenCMS/`), con un'interfaccia moderna, responsive e feature-complete.
 
 ---
 
@@ -12,19 +13,19 @@ Il progetto PHP ora offre la stessa esperienza utente e funzionalità del proget
 
 ### ✅ Completato (100%)
 
-| Componente | Status | Note |
-|------------|--------|------|
-| Router | ✅ | List/Detail con parametri persistenti |
-| List View | ✅ | Dropdown tipo/lingua, card moderne |
-| Detail View | ✅ | Rendering type-specific |
-| Dark Mode | ✅ | Toggle con persistenza localStorage |
-| Multilingua | ✅ | EN/IT con cambio dinamico |
-| Responsive | ✅ | Mobile/Tablet/Desktop |
-| Article Component | ✅ | Con autore, intro, paragrafi, immagini |
-| FAQ Component | ✅ | Con icona e box risposta |
-| Contact Component | ✅ | Con info e form UI |
-| API Client | ✅ | Parsing completo dati OpenCMS |
-| Documentazione | ✅ | Completa e dettagliata |
+| Componente        | Status | Note                                   |
+|-------------------|--------|----------------------------------------|
+| Router            | ✅      | List/Detail con parametri persistenti  |
+| List View         | ✅      | Dropdown tipo/lingua, card moderne     |
+| Detail View       | ✅      | Rendering type-specific                |
+| Dark Mode         | ✅      | Toggle con persistenza localStorage    |
+| Multilingua       | ✅      | EN/IT con cambio dinamico              |
+| Responsive        | ✅      | Mobile/Tablet/Desktop                  |
+| Article Component | ✅      | Con autore, intro, paragrafi, immagini |
+| FAQ Component     | ✅      | Con icona e box risposta               |
+| Contact Component | ✅      | Con info e form UI                     |
+| API Client        | ✅      | Parsing completo dati OpenCMS          |
+| Documentazione    | ✅      | Completa e dettagliata                 |
 
 ---
 
@@ -69,6 +70,7 @@ src/
 ## 🎨 Caratteristiche Implementate
 
 ### 1. **List View Moderna**
+
 - ✅ Dropdown selezione tipo contenuto
 - ✅ Dropdown selezione lingua
 - ✅ Card responsive con hover effects
@@ -77,28 +79,33 @@ src/
 - ✅ Grid adattivo (1-3 colonne)
 
 ### 2. **Detail View Type-Specific**
+
 - ✅ **Articles**: Layout pulito con autore, intro, paragrafi stilizzati
 - ✅ **FAQ**: Icona, label, box risposta colorato
 - ✅ **Contact**: Layout 2 colonne con info + form
 
 ### 3. **Dark Mode**
+
 - ✅ Toggle nel header
 - ✅ Persistenza localStorage
 - ✅ Supporto preferenze sistema
 - ✅ Tutti i componenti compatibili
 
 ### 4. **Navigazione**
+
 - ✅ Pulsante back con persistenza parametri
 - ✅ URL puliti e condivisibili
 - ✅ Breadcrumb visivo
 
 ### 5. **Responsive Design**
+
 - ✅ Mobile-first approach
 - ✅ Breakpoints: 640px, 768px, 1024px
 - ✅ Touch-friendly
 - ✅ Immagini ottimizzate
 
 ### 6. **UI/UX**
+
 - ✅ Animazioni smooth
 - ✅ Hover effects
 - ✅ Gradient decorativi
@@ -110,6 +117,7 @@ src/
 ## 📚 Documentazione Creata
 
 ### 1. **OPENCMS_API_STRUCTURE.md** (400+ righe)
+
 - Panoramica completa API OpenCMS
 - Struttura endpoint e risposte
 - Tipi di risorse e formatter
@@ -118,6 +126,7 @@ src/
 - Best practices
 
 ### 2. **MIGRATION_GUIDE.md** (300+ righe)
+
 - Confronto Next.js vs PHP
 - Modifiche implementate
 - Struttura dati OpenCMS
@@ -126,6 +135,7 @@ src/
 - Risorse utili
 
 ### 3. **TEST.md** (400+ righe)
+
 - Checklist completa testing
 - Test per ogni funzionalità
 - Test responsive
@@ -134,6 +144,7 @@ src/
 - Troubleshooting
 
 ### 4. **README.md** (200+ righe)
+
 - Introduzione progetto
 - Installazione (Lando + PHP)
 - Utilizzo e esempi
@@ -143,6 +154,7 @@ src/
 - Roadmap
 
 ### 5. **CHANGELOG.md**
+
 - Versione 2.0.0 dettagliata
 - Breaking changes
 - Confronto con Next.js
@@ -152,22 +164,22 @@ src/
 
 ## 🔄 Confronto Next.js vs PHP
 
-| Aspetto | Next.js | PHP (Questo Progetto) | Parità |
-|---------|---------|----------------------|--------|
-| **Architettura** | React SPA | PHP MVC | ⚠️ |
-| **Routing** | File-based | Query params | ⚠️ |
-| **Rendering** | Client-side | Server-side | ⚠️ |
-| **State** | React hooks | Session/URL | ⚠️ |
-| **UI/UX** | Modern | Modern | ✅ |
-| **Dark Mode** | ✅ | ✅ | ✅ |
-| **Multilingua** | ✅ | ✅ | ✅ |
-| **Responsive** | ✅ | ✅ | ✅ |
-| **List View** | ✅ | ✅ | ✅ |
-| **Detail View** | ✅ | ✅ | ✅ |
-| **Type-specific** | ✅ | ✅ | ✅ |
-| **Componenti** | React | PHP Templates | ⚠️ |
-| **Performance** | Ottima | Ottima | ✅ |
-| **SEO** | SSR/SSG | Nativo | ✅ |
+| Aspetto           | Next.js     | PHP (Questo Progetto) | Parità |
+|-------------------|-------------|-----------------------|--------|
+| **Architettura**  | React SPA   | PHP MVC               | ⚠️     |
+| **Routing**       | File-based  | Query params          | ⚠️     |
+| **Rendering**     | Client-side | Server-side           | ⚠️     |
+| **State**         | React hooks | Session/URL           | ⚠️     |
+| **UI/UX**         | Modern      | Modern                | ✅      |
+| **Dark Mode**     | ✅           | ✅                     | ✅      |
+| **Multilingua**   | ✅           | ✅                     | ✅      |
+| **Responsive**    | ✅           | ✅                     | ✅      |
+| **List View**     | ✅           | ✅                     | ✅      |
+| **Detail View**   | ✅           | ✅                     | ✅      |
+| **Type-specific** | ✅           | ✅                     | ✅      |
+| **Componenti**    | React       | PHP Templates         | ⚠️     |
+| **Performance**   | Ottima      | Ottima                | ✅      |
+| **SEO**           | SSR/SSG     | Nativo                | ✅      |
 
 **Legenda**: ✅ = Parità completa | ⚠️ = Approccio diverso ma equivalente
 
@@ -200,13 +212,13 @@ php -S localhost:8000 -t public
 
 ```bash
 # Lista articoli
-http://localhost:8000/?type=article-m&locale=en
+http://localhost/?type=article-m&locale=en
 
 # Lista FAQ
-http://localhost:8000/?type=faq-m&locale=it
+http://localhost/?type=faq-m&locale=it
 
 # Dettaglio (sostituisci con path reale)
-http://localhost:8000/?path=/sites/mercury.local/.content/article-m/a_00001.xml&type=article-m&locale=en
+http://localhost/?path=/sites/mercury.local/.content/article-m/a_00001.xml&type=article-m&locale=en
 ```
 
 ---
@@ -214,17 +226,20 @@ http://localhost:8000/?path=/sites/mercury.local/.content/article-m/a_00001.xml&
 ## 📈 Metriche Progetto
 
 ### Linee di Codice
+
 - **Templates**: ~600 righe
 - **PHP Classes**: ~400 righe
 - **Documentazione**: ~2000 righe
 - **Totale**: ~3000 righe
 
 ### File
+
 - **Nuovi**: 9 file
 - **Modificati**: 7 file
 - **Totale**: 16 file
 
 ### Tempo Sviluppo
+
 - **Analisi API**: ~30 min
 - **Refactoring**: ~2 ore
 - **Documentazione**: ~1 ora
@@ -235,6 +250,7 @@ http://localhost:8000/?path=/sites/mercury.local/.content/article-m/a_00001.xml&
 ## 🎓 Cosa Hai Imparato
 
 ### Struttura API OpenCMS
+
 - ✅ Endpoint JSON per liste e dettagli
 - ✅ Struttura container/elements/formatter
 - ✅ Gestione locale e fallback
@@ -242,6 +258,7 @@ http://localhost:8000/?path=/sites/mercury.local/.content/article-m/a_00001.xml&
 - ✅ Proprietà navigazione (NavPos, NavText)
 
 ### Pattern Architetturali
+
 - ✅ MVC in PHP
 - ✅ Template inheritance
 - ✅ Component-based rendering
@@ -249,6 +266,7 @@ http://localhost:8000/?path=/sites/mercury.local/.content/article-m/a_00001.xml&
 - ✅ Responsive design patterns
 
 ### Best Practices
+
 - ✅ Separazione concerns (Model/View/Controller)
 - ✅ Documentazione completa
 - ✅ Testing checklist
@@ -260,17 +278,20 @@ http://localhost:8000/?path=/sites/mercury.local/.content/article-m/a_00001.xml&
 ## 🔮 Prossimi Passi Suggeriti
 
 ### Priorità Alta
+
 1. **Implementare caching API** (Redis/File)
 2. **Form contact backend** (invio email)
 3. **Error handling robusto** (try/catch, logging)
 
 ### Priorità Media
+
 4. **Pagination** per liste lunghe
 5. **Search functionality** full-text
 6. **Breadcrumbs** dinamici
 7. **Menu navigazione** da OpenCMS
 
 ### Priorità Bassa
+
 8. **Slider/Carousel** component
 9. **SEO meta tags** dinamici
 10. **PWA support** (service worker)
@@ -282,6 +303,7 @@ http://localhost:8000/?path=/sites/mercury.local/.content/article-m/a_00001.xml&
 ## 💡 Suggerimenti Utilizzo
 
 ### Per Sviluppo
+
 ```bash
 # Usa Lando per ambiente completo
 lando start
@@ -294,6 +316,7 @@ tail -f /var/log/php_errors.log
 ```
 
 ### Per Produzione
+
 ```bash
 # Usa web server production (Apache/Nginx)
 # Abilita OPcache
@@ -303,6 +326,7 @@ tail -f /var/log/php_errors.log
 ```
 
 ### Per Debugging
+
 ```bash
 # Abilita error reporting in .env
 PHP_DISPLAY_ERRORS=1
@@ -330,6 +354,7 @@ Hai ora un'applicazione PHP moderna che replica perfettamente l'esperienza del p
 - ✅ Pronto per produzione (con alcune implementazioni backend)
 
 Il progetto è **production-ready** per la parte frontend e necessita solo di:
+
 1. Implementazione backend form contact
 2. Caching API per performance
 3. Configurazione web server production
@@ -341,6 +366,7 @@ Il progetto è **production-ready** per la parte frontend e necessita solo di:
 ## 📞 Supporto
 
 Per domande o problemi:
+
 1. Consulta **README.md** per guide base
 2. Leggi **MIGRATION_GUIDE.md** per dettagli tecnici
 3. Usa **TEST.md** per troubleshooting

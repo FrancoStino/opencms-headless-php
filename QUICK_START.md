@@ -1,16 +1,19 @@
 # 🚀 Quick Start - Diagnosi Pagine Vuote
 
 ## ⚠️ Problema Attuale
+
 Le pagine (homepage e contatti) risultano vuote.
 
 ## 🔍 Primo Passo: Test API
 
 **Accedi subito a questa pagina:**
+
 ```
-http://localhost:8000/test-api.php
+http://localhost/test-api.php
 ```
 
 Questa pagina ti dirà immediatamente:
+
 - ✅ Se OpenCMS è raggiungibile
 - ✅ Se i containers esistono
 - ✅ Quali elementi sono presenti
@@ -35,13 +38,15 @@ php -S localhost:8000 -t public
 ### 2. Accedi alla Pagina di Test
 
 Apri nel browser:
+
 ```
-http://localhost:8000/test-api.php
+http://localhost/test-api.php
 ```
 
 ### 3. Leggi i Risultati
 
 #### ✅ Se tutto è OK:
+
 - Vedrai "✅ Risposta ricevuta"
 - Containers: 1 o più
 - Elementi presenti con formatterKeys
@@ -49,11 +54,13 @@ http://localhost:8000/test-api.php
 **→ Il problema è nel rendering, non nell'API**
 
 #### ❌ Se API non raggiungibile:
+
 - Vedrai "❌ ERRORE: Impossibile raggiungere l'API"
 
 **→ OpenCMS non è in esecuzione o URL sbagliato**
 
 **Soluzione:**
+
 1. Verifica che OpenCMS sia avviato
 2. Controlla `.env`:
    ```bash
@@ -66,12 +73,14 @@ http://localhost:8000/test-api.php
    ```
 
 #### ⚠️ Se pagina non trovata:
+
 - Vedrai "❌ Pagina non trovata"
 
 **→ Il path `/contatti` non esiste in OpenCMS**
 
 **Soluzione:**
 Usa un path esistente. Modifica `src/Router.php`:
+
 ```php
 if ($path === '/contatti' || $path === '/contatti/') {
     // Cambia questo path con uno esistente
@@ -87,7 +96,7 @@ if ($path === '/contatti' || $path === '/contatti/') {
 
 **Debug automatico attivo!**
 
-Quando accedi alla homepage (`http://localhost:8000/`), vedrai un box giallo con debug info:
+Quando accedi alla homepage (`http://localhost/`), vedrai un box giallo con debug info:
 
 ```
 🔍 Debug Info
@@ -96,11 +105,13 @@ Containers Count: 0
 ```
 
 **Se Count = 0:**
+
 - L'API risponde ma senza containers
 - La pagina non è di tipo `containerpage`
 - Verifica con `test-api.php` la struttura JSON
 
 **Se Containers: NOT SET:**
+
 - La variabile non arriva al template
 - Problema nel `ViewController.php`
 - Controlla i log PHP
@@ -108,20 +119,21 @@ Containers Count: 0
 ### Scenario B: "Tutto sembra OK ma niente si vede"
 
 **Possibili cause:**
+
 1. **FormatterKey non supportato**
-   - Vai su `test-api.php`
-   - Guarda i formatterKeys degli elementi
-   - Verifica che siano in `templates/page.php`
+    - Vai su `test-api.php`
+    - Guarda i formatterKeys degli elementi
+    - Verifica che siano in `templates/page.php`
 
 2. **Contenuto elemento non caricato**
-   - Il path dell'elemento è sbagliato
-   - L'elemento non ha contenuto per la lingua
-   - Testa manualmente l'URL dell'elemento
+    - Il path dell'elemento è sbagliato
+    - L'elemento non ha contenuto per la lingua
+    - Testa manualmente l'URL dell'elemento
 
 3. **JavaScript non funziona**
-   - Apri DevTools Console
-   - Cerca errori JavaScript
-   - Verifica che slider.js sia caricato
+    - Apri DevTools Console
+    - Cerca errori JavaScript
+    - Verifica che slider.js sia caricato
 
 ---
 
@@ -130,6 +142,7 @@ Containers Count: 0
 ### Fix 1: Disabilita Debug Mode
 
 Se il debug è fastidioso, modifica `templates/page.php`:
+
 ```php
 // Cambia questa riga:
 $showDebug = empty($containers);
@@ -173,9 +186,9 @@ Segui questa checklist in ordine:
 
 - [ ] **Server avviato** (`lando start` o `php -S ...`)
 - [ ] **OpenCMS raggiungibile** (test con `curl`)
-- [ ] **test-api.php accessibile** (`http://localhost:8000/test-api.php`)
+- [ ] **test-api.php accessibile** (`http://localhost/test-api.php`)
 - [ ] **test-api.php mostra containers** (Count > 0)
-- [ ] **Homepage accessibile** (`http://localhost:8000/`)
+- [ ] **Homepage accessibile** (`http://localhost/`)
 - [ ] **Debug info visibile** (box giallo se vuota)
 - [ ] **Log PHP controllati** (cerca errori)
 
@@ -184,6 +197,7 @@ Segui questa checklist in ordine:
 ## 🎓 Documentazione Completa
 
 Per approfondire:
+
 - **[DEBUGGING.md](./DEBUGGING.md)** - Guida completa al debugging
 - **[CONTAINER_PAGES.md](./CONTAINER_PAGES.md)** - Come funzionano le container pages
 - **[IMPLEMENTATION_SUMMARY.md](./IMPLEMENTATION_SUMMARY.md)** - Riepilogo implementazione
@@ -193,20 +207,26 @@ Per approfondire:
 ## 💡 Suggerimenti
 
 ### Suggerimento 1: Inizia dalla Lista
+
 Se hai fretta, usa la lista articoli che già funziona:
+
 ```
-http://localhost:8000/?type=article-m&locale=en
+http://localhost/?type=article-m&locale=en
 ```
 
 ### Suggerimento 2: Verifica Progetto Next.js
+
 Confronta con il progetto Next.js di riferimento:
+
 ```bash
 cd ~/IdeaProjects/OpenCMS/
 # Verifica quali pagine esistono
 ```
 
 ### Suggerimento 3: Log in Tempo Reale
+
 Tieni aperto il log mentre testi:
+
 ```bash
 # Con Lando
 lando logs -s appserver -f

@@ -9,17 +9,20 @@ Se le pagine (homepage, contatti) appaiono completamente vuote, segui questi pas
 ## 1. Verifica API OpenCMS
 
 ### Accedi alla pagina di test:
+
 ```
-http://localhost:8000/test-api.php
+http://localhost/test-api.php
 ```
 
 Questa pagina ti mostrerà:
+
 - ✅ Se l'API OpenCMS è raggiungibile
 - ✅ Struttura dei containers
 - ✅ Elementi presenti
 - ✅ FormatterKeys disponibili
 
 ### Cosa verificare:
+
 1. **API raggiungibile**: Deve mostrare "✅ Risposta ricevuta"
 2. **Containers presenti**: Deve mostrare almeno 1 container
 3. **Elementi presenti**: Ogni container deve avere elementi
@@ -30,6 +33,7 @@ Questa pagina ti mostrerà:
 ## 2. Verifica Configurazione
 
 ### File `.env`
+
 ```bash
 OPENCMS_SERVER=http://localhost
 ```
@@ -37,6 +41,7 @@ OPENCMS_SERVER=http://localhost
 Assicurati che l'URL sia corretto e che OpenCMS sia in esecuzione.
 
 ### Test manuale API:
+
 ```bash
 curl http://localhost/json/sites/mercury.local/index.html?locale=en&fallbackLocale
 ```
@@ -50,6 +55,7 @@ Dovresti vedere un JSON con `containers` e `elements`.
 Il template `page.php` mostra automaticamente informazioni di debug se i containers sono vuoti.
 
 ### Cosa mostra:
+
 - **Containers**: Se la variabile è impostata
 - **Containers Count**: Numero di containers
 - **Page Title**: Titolo della pagina
@@ -57,6 +63,7 @@ Il template `page.php` mostra automaticamente informazioni di debug se i contain
 - **Base URL**: URL API OpenCMS
 
 ### Come leggere il debug:
+
 ```
 Containers: SET          → Variabile impostata ✅
 Containers Count: 0      → Nessun container ❌
@@ -79,6 +86,7 @@ tail -f /var/log/php_errors.log
 ```
 
 ### Cerca questi messaggi:
+
 ```
 Page Path: /sites/mercury.local/index.html
 Page Data: Array(...)
@@ -91,17 +99,21 @@ Template page.php - Containers: NOT SET
 ## 5. Problemi Comuni
 
 ### Problema 1: API non raggiungibile
+
 **Sintomo**: `test-api.php` mostra "❌ ERRORE: Impossibile raggiungere l'API"
 
 **Soluzione**:
+
 1. Verifica che OpenCMS sia in esecuzione
 2. Controlla l'URL in `.env`
 3. Testa manualmente: `curl http://localhost/json/sites/mercury.local/`
 
 ### Problema 2: Pagina non esiste
+
 **Sintomo**: `test-api.php` mostra "❌ Pagina non trovata"
 
 **Soluzione**:
+
 1. La pagina `/contatti` potrebbe non esistere in OpenCMS
 2. Verifica le pagine disponibili:
    ```bash
@@ -110,17 +122,21 @@ Template page.php - Containers: NOT SET
 3. Usa un path esistente nel Router
 
 ### Problema 3: Containers vuoti
+
 **Sintomo**: Debug mostra `Containers Count: 0`
 
 **Soluzione**:
+
 1. Verifica che la pagina sia di tipo `containerpage`
 2. Controlla che ci siano elementi nei containers
 3. Usa `test-api.php` per vedere la struttura completa
 
 ### Problema 4: Formatter non supportato
+
 **Sintomo**: Elementi presenti ma non renderizzati
 
 **Soluzione**:
+
 1. Verifica il `formatterKey` in `test-api.php`
 2. Aggiungi supporto in `page.php`:
    ```php
@@ -130,9 +146,11 @@ Template page.php - Containers: NOT SET
    ```
 
 ### Problema 5: Contenuto elemento non caricato
+
 **Sintomo**: Slider o form non visibili
 
 **Soluzione**:
+
 1. Verifica che `fetchElementContent()` funzioni
 2. Controlla il path dell'elemento
 3. Testa manualmente:
@@ -158,26 +176,33 @@ Template page.php - Containers: NOT SET
 ## 7. Test Step-by-Step
 
 ### Step 1: Test API Base
+
 ```bash
 curl http://localhost/json/sites/mercury.local/
 ```
+
 **Aspettativa**: JSON con lista pagine/contenuti
 
 ### Step 2: Test Homepage API
+
 ```bash
 curl http://localhost/json/sites/mercury.local/index.html?locale=en&fallbackLocale
 ```
+
 **Aspettativa**: JSON con `containers` array
 
 ### Step 3: Test API Client
-Accedi a: `http://localhost:8000/test-api.php`
+
+Accedi a: `http://localhost/test-api.php`
 **Aspettativa**: "✅ API Client funziona"
 
 ### Step 4: Test Homepage
-Accedi a: `http://localhost:8000/`
+
+Accedi a: `http://localhost/`
 **Aspettativa**: Slider, sezioni, contenuti visibili
 
 ### Step 5: Verifica Debug
+
 Se pagina vuota, verifica il box giallo con debug info
 **Aspettativa**: `Containers Count: > 0`
 
@@ -186,6 +211,7 @@ Se pagina vuota, verifica il box giallo con debug info
 ## 8. Soluzioni Rapide
 
 ### Soluzione 1: Pagina di test non esiste
+
 Se `/contatti` non esiste, modifica il Router per usare una pagina esistente:
 
 ```php
@@ -197,6 +223,7 @@ if ($path === '/contatti' || $path === '/contatti/') {
 ```
 
 ### Soluzione 2: Usa homepage per test
+
 Concentrati prima sulla homepage:
 
 ```php
@@ -207,6 +234,7 @@ if ($path === '/' || $path === '/index.php') {
 ```
 
 ### Soluzione 3: Fallback a lista
+
 Se le container pages non funzionano, usa temporaneamente la lista:
 
 ```php
@@ -222,19 +250,24 @@ if ($path === '/' || $path === '/index.php') {
 ## 9. Strumenti Utili
 
 ### Browser DevTools
+
 - **Network Tab**: Verifica richieste API
 - **Console**: Cerca errori JavaScript
 - **Elements**: Verifica se HTML è generato
 
 ### PHP Error Reporting
+
 Abilita errori in `public/index.php`:
+
 ```php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ```
 
 ### Var Dump
+
 Aggiungi debug temporaneo:
+
 ```php
 // In page.php
 echo '<pre>';
@@ -250,17 +283,17 @@ exit;
 Se il problema persiste:
 
 1. **Raccogli informazioni**:
-   - Output di `test-api.php`
-   - Log PHP
-   - Screenshot debug info
+    - Output di `test-api.php`
+    - Log PHP
+    - Screenshot debug info
 
 2. **Verifica documentazione**:
-   - [CONTAINER_PAGES.md](./CONTAINER_PAGES.md)
-   - [OPENCMS_API_STRUCTURE.md](./OPENCMS_API_STRUCTURE.md)
+    - [CONTAINER_PAGES.md](./CONTAINER_PAGES.md)
+    - [OPENCMS_API_STRUCTURE.md](./OPENCMS_API_STRUCTURE.md)
 
 3. **Controlla esempi**:
-   - Progetto Next.js di riferimento
-   - Documentazione OpenCMS
+    - Progetto Next.js di riferimento
+    - Documentazione OpenCMS
 
 ---
 
@@ -285,16 +318,18 @@ lando start
 curl http://localhost/json/sites/mercury.local/index.html
 
 # 6. Accedi a test
-http://localhost:8000/test-api.php
+http://localhost/test-api.php
 ```
 
 ---
 
 ## Conclusione
 
-La pagina di test `test-api.php` è il tuo migliore amico per il debugging. Inizia sempre da lì per verificare che l'API OpenCMS funzioni correttamente.
+La pagina di test `test-api.php` è il tuo migliore amico per il debugging. Inizia sempre da lì per verificare che l'API
+OpenCMS funzioni correttamente.
 
 **Ordine di debug**:
+
 1. ✅ API OpenCMS raggiungibile
 2. ✅ Containers presenti
 3. ✅ Elementi presenti

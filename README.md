@@ -1,6 +1,7 @@
 # OpenCMS Headless PHP
 
-Un'applicazione PHP moderna per consumare contenuti da OpenCMS tramite API headless. Ispirata al progetto Next.js OpenCMS con un'interfaccia utente pulita e responsive.
+Un'applicazione PHP moderna per consumare contenuti da OpenCMS tramite API headless. Ispirata al progetto Next.js
+OpenCMS con un'interfaccia utente pulita e responsive.
 
 ## 🚀 Caratteristiche
 
@@ -78,29 +79,29 @@ opencms-headless-php/
 
 ```
 # Homepage (container page con slider, sezioni, etc.)
-http://localhost:8000/
+http://localhost/
 
 # Pagina Contatti (container page con form)
-http://localhost:8000/contatti
+http://localhost/contatti
 
 # Lista articoli/news
-http://localhost:8000/?type=article-m&locale=en
+http://localhost/?type=article-m&locale=en
 
 # Lista con tipo specifico
-http://localhost:8000/?type=contact-m&locale=it
-http://localhost:8000/?type=faq-m&locale=en
+http://localhost/?type=contact-m&locale=it
+http://localhost/?type=faq-m&locale=en
 
 # Dettaglio contenuto
-http://localhost:8000/?path=/sites/mercury.local/.content/article-m/a_00001.xml&type=article-m&locale=en
+http://localhost/?path=/sites/mercury.local/.content/article-m/a_00001.xml&type=article-m&locale=en
 ```
 
 ### Tipi di Contenuto Supportati
 
-| Tipo | Descrizione | Formatter OpenCMS |
-|------|-------------|-------------------|
-| `article-m` | Articoli con testo e immagini | m-article |
-| `contact-m` | Contatti con form | m-contact |
-| `faq-m` | Domande frequenti | m-faq |
+| Tipo        | Descrizione                   | Formatter OpenCMS |
+|-------------|-------------------------------|-------------------|
+| `article-m` | Articoli con testo e immagini | m-article         |
+| `contact-m` | Contatti con form             | m-contact         |
+| `faq-m`     | Domande frequenti             | m-faq             |
 
 ### Lingue Supportate
 
@@ -133,17 +134,20 @@ OPENCMS_SERVER=http://localhost
 ### Pagine Vuote?
 
 **Accedi subito alla pagina di test:**
+
 ```
-http://localhost:8000/test-api.php
+http://localhost/test-api.php
 ```
 
 Questa pagina diagnosticherà automaticamente il problema e ti dirà:
+
 - ✅ Se l'API OpenCMS è raggiungibile
 - ✅ Se i containers esistono
 - ✅ Quali elementi sono presenti
 - ❌ Dove si trova esattamente il problema
 
 **Per maggiori dettagli vedi:**
+
 - **[QUICK_START.md](./QUICK_START.md)** - Guida rapida con soluzioni immediate
 - **[DEBUGGING.md](./DEBUGGING.md)** - Guida completa al debugging
 
@@ -159,16 +163,19 @@ Questa pagina diagnosticherà automaticamente il problema e ti dirà:
 ## 🎨 Componenti UI
 
 ### Dark Mode
+
 - Toggle nel header
 - Persistenza in localStorage
 - Supporto preferenze sistema
 
 ### Responsive Design
+
 - Mobile-first approach
 - Breakpoints: sm (640px), md (768px), lg (1024px)
 - Grid adattivo per liste
 
 ### Animazioni
+
 - Hover effects su card
 - Transizioni smooth
 - Transform su immagini
@@ -198,22 +205,29 @@ lando rebuild -y
 ## 🐛 Troubleshooting
 
 ### API non disponibile
+
 ```
 Errore: Cannot connect to OpenCMS API
 ```
+
 **Soluzione**: Verifica che OpenCMS sia in esecuzione su `http://localhost` e che l'API JSON sia attiva.
 
 ### Contenuti non visualizzati
+
 ```
 No content found
 ```
-**Soluzione**: 
+
+**Soluzione**:
+
 - Verifica il tipo di contenuto esista in OpenCMS
 - Controlla la struttura dati in `ApiClient.php`
 - Verifica la lingua selezionata sia disponibile
 
 ### Immagini non caricate
-**Soluzione**: Verifica che il path delle immagini sia corretto e accessibile. Le immagini devono essere servite da OpenCMS.
+
+**Soluzione**: Verifica che il path delle immagini sia corretto e accessibile. Le immagini devono essere servite da
+OpenCMS.
 
 ## 🚧 Roadmap
 

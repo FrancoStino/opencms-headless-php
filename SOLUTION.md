@@ -2,7 +2,8 @@
 
 ## 🎯 Problema Risolto
 
-Il problema era che il sistema cercava direttamente `/sites/mercury.local/contatti/index.html`, ma l'API ritornava la **lista della cartella** invece del file.
+Il problema era che il sistema cercava direttamente `/sites/mercury.local/contatti/index.html`, ma l'API ritornava la *
+*lista della cartella** invece del file.
 
 ## 🔧 Soluzione Implementata
 
@@ -71,10 +72,11 @@ private function isFolderListing($data): bool
 ### 1. Testa la Homepage
 
 ```
-http://localhost:8000/
+http://localhost/
 ```
 
 **Dovrebbe mostrare:**
+
 - ✅ Slider hero (se presente)
 - ✅ Sezioni testo/immagine
 - ✅ Contenuti vari
@@ -82,25 +84,28 @@ http://localhost:8000/
 ### 2. Testa la Pagina Contatti
 
 ```
-http://localhost:8000/contatti
+http://localhost/contatti
 ```
 
 **Dovrebbe mostrare:**
+
 - ✅ Contenuto della pagina contatti
 - ✅ Form (se presente)
 - ✅ Sezioni varie
 
 **Se ancora vuota:**
+
 - Devi creare un file `index.html` dentro la cartella `/contatti/` in OpenCMS
 - Oppure il file esiste ma non ha containers
 
 ### 3. Verifica con test-api.php
 
 ```
-http://localhost:8000/test-api.php
+http://localhost/test-api.php
 ```
 
 Ora dovresti vedere:
+
 - ✅ Test 2: Lista contenuto cartella contatti
 - ✅ Test 2b: Se esiste index.html, lo carica
 
@@ -138,6 +143,7 @@ http://localhost/system/workplace/
 ### 4. Aggiungi Contenuti
 
 Aggiungi elementi alla pagina:
+
 - **Text+Image Section** per info contatto
 - **Webform** per il form di contatto
 - **Text Only Section** per testo aggiuntivo
@@ -150,7 +156,7 @@ Aggiungi elementi alla pagina:
 ### 6. Testa
 
 ```
-http://localhost:8000/contatti
+http://localhost/contatti
 ```
 
 Ora dovrebbe funzionare! ✅
@@ -160,10 +166,11 @@ Ora dovrebbe funzionare! ✅
 Se ancora non funziona, usa `test-api.php`:
 
 ```
-http://localhost:8000/test-api.php
+http://localhost/test-api.php
 ```
 
 Guarda:
+
 - **Test 2**: Mostra contenuto cartella `/contatti/`
 - **Test 2b**: Mostra se `index.html` esiste e se è caricabile
 
@@ -187,6 +194,7 @@ Invece di cartella, crea file diretto:
 ```
 
 E modifica Router:
+
 ```php
 if ($path === '/contatti' || $path === '/contatti/') {
     $controller->showPage('/sites/mercury.local/contatti.html', $locale);
@@ -207,6 +215,7 @@ if ($path === '/contatti' || $path === '/contatti/') {
 ## 🎉 Conclusione
 
 Il sistema ora gestisce automaticamente:
+
 - ✅ Container pages dirette (`/index.html`)
 - ✅ Cartelle con index.html (`/contatti/` → `/contatti/index.html`)
 - ✅ Fallback intelligente
