@@ -14,7 +14,6 @@ attraverso un'architettura MVC server-side.
 
 ## Architettura del Sistema
 
-
 ### Struttura delle Directory
 
 ```
@@ -177,6 +176,7 @@ I componenti sono divisi in due categorie:
 ## Sistema di Template
 
 ### Layout Principale (`templates/layout.php`)
+
 - Gestisce il caricamento di risorse esterne (CSS, JS)
 - Include TailwindCSS via CDN
 - Header con navigazione responsive
@@ -184,23 +184,27 @@ I componenti sono divisi in due categorie:
 - Struttura semantica HTML5
 
 ### File Statici Pubblici (`public/`)
+
 - `css/styles.css` - Stili CSS custom e utility classes
 - `js/app.js` - JavaScript per interattività e gestione stato
 
 ### Template Specifici
 
 #### `list.php`
+
 - Vista griglia responsive per liste contenuti
 - Dropdown per selezione tipo/locale
 - Card con hover effects
 - Paginazione implicita (tutti contenuti caricati)
 
 #### `detail.php`
+
 - Rendering type-specific dei contenuti
 - Include componenti appropriati per tipo
 - Layout pulito e leggibile
 
 #### `page.php`
+
 - Rendering complesso per pagine container
 - Gestione struttura nested containers/elements
 - Fetch dinamico contenuti elementi
@@ -319,6 +323,7 @@ I componenti sono divisi in due categorie:
 OPENCMS_SERVER=http://localhost  # URL server OpenCMS
 GOOGLE_MAPS_API_KEY=your_api_key_here  # API Key per Google Maps
 ```
+
 ### Build Commands
 
 ```bash
@@ -354,16 +359,19 @@ L'applicazione supporta mappe Google integrate nei dettagli dei contatti:
   }
 }
 ```
+
 ---
 
 ## Best Practices Implementate
 
 ### Performance
+
 - **CSS Compilato**: Tailwind precompilato per prestazioni ottimali
 - **Lazy Loading**: Contenuti caricati on-demand
 - **Minimal JS**: Solo funzionalità essenziali
 
 ### UX/UI
+
 - **Progressive Enhancement**: Funziona senza JS
 - **Accessibility**: Semantica HTML corretta
 - **Responsive**: Mobile-first approach
