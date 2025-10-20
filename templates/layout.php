@@ -3,68 +3,19 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>OpenCms Headless - Demo</title>
 		<link rel="icon"
 			  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
-		<style>
-            .svg-icon-red {
-                filter: invert(27%) sepia(93%) saturate(7471%) hue-rotate(356deg) brightness(91%) contrast(115%);
-            }
 
-            /* Ridimensiona icone grandi nei contenuti */
-            .prose svg,
-            .prose img[src*=".svg"] {
-                max-width: 80px !important;
-                max-height: 80px !important;
-                width: auto !important;
-                height: auto !important;
-            }
-		</style>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			tailwind.config = {
-				darkMode: 'class',
-				theme:    {
-					extend: {
-						colors: {
-							primary: {
-								50:  '#eff6ff',
-								100: '#dbeafe',
-								200: '#bfdbfe',
-								300: '#93c5fd',
-								400: '#60a5fa',
-								500: '#3b82f6',
-								600: '#2563eb',
-								700: '#1d4ed8',
-								800: '#1e40af',
-								900: '#1e3a8a',
-							}
-						}
-					}
-				}
-			}
-		</script>
-		<style>
-            .line-clamp-2 {
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
+		<!-- Compiled CSS (Tailwind + Custom Styles) -->
+		<!-- To rebuild: npm run build:css or npx tailwindcss -i ./css/input.css -o ./public/dist/output.css --minify -->
+		<link rel="stylesheet" href="/dist/output.css">
 
-            .line-clamp-3 {
-                display: -webkit-box;
-                -webkit-line-clamp: 3;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-		</style>
 	</head>
 	<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
 		<!-- Header -->
 		<header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="flex justify-between items-center py-4">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+				<div class="flex justify-between items-center">
 					<a href="/" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
 						<div class="text-3xl">🚀</div>
 						<div>
@@ -87,13 +38,11 @@
 						</nav>
 
 						<!-- Dark Mode Toggle -->
-						<button
-								onclick="toggleDarkMode()"
+						<button onclick="toggleDarkMode()"
 								class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-								aria-label="Toggle dark mode"
-						>
+								aria-label="Toggle dark mode">
 							<svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
-								<path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+								<path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 000 2h1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
 							</svg>
 							<svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20">
 								<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
@@ -101,31 +50,28 @@
 						</button>
 
 						<!-- Mobile Menu Toggle -->
-						<button
-								onclick="toggleMobileMenu()"
+						<button onclick="toggleMobileMenu()"
 								class="md:hidden p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-								aria-label="Toggle menu"
-						>
+								aria-label="Toggle menu">
 							<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 									  d="M4 6h16M4 12h16M4 18h16"/>
 							</svg>
 						</button>
 					</div>
-				</div>
 
-				<!-- Mobile Menu -->
-				<div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
-					<a href="/"
-					   class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-						Home
-					</a>
-					<a href="/contatti"
-					   class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
-						Contatti
-					</a>
+					<!-- Mobile Menu -->
+					<div id="mobile-menu" class="hidden md:hidden pb-4 space-y-2">
+						<a href="/"
+						   class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+							Home
+						</a>
+						<a href="/contatti"
+						   class="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+							Contatti
+						</a>
+					</div>
 				</div>
-			</div>
 		</header>
 
 		<!-- Main Content -->
@@ -155,34 +101,7 @@
 			</div>
 		</footer>
 
-		<script>
-			// Dark mode toggle
-			function toggleDarkMode() {
-				const html   = document.documentElement;
-				const isDark = html.classList.contains( 'dark' );
-
-				if ( isDark ) {
-					html.classList.remove( 'dark' );
-					localStorage.setItem( 'darkMode', 'false' );
-				} else {
-					html.classList.add( 'dark' );
-					localStorage.setItem( 'darkMode', 'true' );
-				}
-			}
-
-			// Mobile menu toggle
-			function toggleMobileMenu() {
-				const menu = document.getElementById( 'mobile-menu' );
-				menu.classList.toggle( 'hidden' );
-			}
-
-			// Initialize dark mode from localStorage
-			( function () {
-				const darkMode = localStorage.getItem( 'darkMode' );
-				if ( darkMode === 'true' || ( !darkMode && window.matchMedia( '(prefers-color-scheme: dark)' ).matches ) ) {
-					document.documentElement.classList.add( 'dark' );
-				}
-			} )();
-		</script>
+		<!-- Custom JavaScript -->
+		<script src="/js/app.js" defer></script>
 	</body>
 </html>
