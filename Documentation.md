@@ -336,35 +336,43 @@ npm run build:css
 3. **Ricarica pagina** per vedere i cambiamenti
 4. **Per sviluppo continuo** usa `npm run watch:css`
 
-### Google Maps Integration
-
-L'applicazione supporta mappe Google integrate nei dettagli dei contatti:
-
-1. **Ottieni API Key** da [Google Cloud Console](https://console.cloud.google.com/)
-2. **Abilita Google Maps API** nel tuo progetto
-3. **Imposta variabile ambiente**: `GOOGLE_MAPS_API_KEY=your_key`
-4. **La mappa appare automaticamente** nei contatti con indirizzo valido
-
-**Struttura indirizzo JSON**:
-```json
-{
-  "Contact": {
-    "AddressChoice": {
-      "Address": {
-        "StreetAddress": "Via Roma 123",
-        "PostalCode": "00100",
-        "Locality": "Roma"
-      }
-    }
-  }
-}
-```
-
----
-
-## Best Practices Implementate
-
-### Performance
+> ### Google Maps Integration
+> 
+> L'applicazione supporta mappe Google integrate nei dettagli dei contatti:
+> 
+> #### Configurazione API Key
+> 
+> 1. **Vai su [Google Cloud Console](https://console.cloud.google.com/)**
+> 2. **Crea un nuovo progetto** o selezionane uno esistente
+> 3. **Abilita queste API**:
+>    - Maps Embed API
+>    - Maps JavaScript API (se usi il componente Contact con mappe interattive)
+> 4. **Crea una API Key** nelle credenziali
+> 5. **Configura restrictions** (opzionale ma raccomandato):
+>    - **Application restrictions**: HTTP referrers
+>    - **Aggiungi**: `*.localhost*`, `*.127.0.0.1*`, `tuosito.com*`
+>    - **API restrictions**: Limita alle API Maps
+> 6. **Imposta la variabile ambiente**:
+>    ```bash
+>    GOOGLE_MAPS_API_KEY=LA_TUA_API_KEY_VERA
+>    ```
+> 
+> #### Struttura indirizzo JSON
+> ```json
+> {
+>   "MapCoord": [
+>     {
+>       "Address": "Via Roma 123, Roma, Italy",
+>       "Coord": "{\"lat\":41.9028,\"lng\":12.4964,\"zoom\":10}"
+>     }
+>   ]
+> }
+> ```
+> 
+> #### Tipi di Mappe Supportate
+> - **Google Maps Embed**: Per mappe statiche (componente map-google.php)
+> - **Google Maps JavaScript**: Per mappe interattive (componente Contact.php)
+> - **OpenStreetMap**: Fallback gratuito senza API key
 
 - **CSS Compilato**: Tailwind precompilato per prestazioni ottimali
 - **Lazy Loading**: Contenuti caricati on-demand
